@@ -13,7 +13,6 @@ before_install:
 deploy:
   provider: heroku
   app: integration-app
-  api_key:
-    secure:  <%= ENV["HEROKU_API_KEY"] %>
+  api_key: <%= ENV["HEROKU_API_KEY"] %>
   on:
     all_branches: true
