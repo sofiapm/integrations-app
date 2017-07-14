@@ -7,6 +7,7 @@ services:
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
+  - cp config/secrets.yml.travis config/secrets.yml
 deploy:
   provider: heroku
   app: integration-app
