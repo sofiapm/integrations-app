@@ -19,4 +19,4 @@ deploy:
   app: integrations-app
   on:
     repo: sofiapm/integrations-app
-    all_branches: true
+    branch: master
