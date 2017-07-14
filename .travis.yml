@@ -5,18 +5,11 @@ rvm:
 services:
 - postgresql
 addons:
-"  postgresql": '9.4'
+  postgresql: '9.4'
 before_install:
 - cp config/secrets.yml.travis config/secrets.yml
 - cp config/database.yml.travis config/database.yml
 - psql -c 'create database travis_ci_test;' -U postgres
 notifications:
-  "+  email": false
-deploy:
-  provider: heroku
-  api_key:
-    secure: <%= ENV["HEROKU_API_KEY"] %>
-  app: integrations-app
-  on:
-    repo: sofiapm/integrations-app
-    all_branches: true
+  email: false
+
