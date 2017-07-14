@@ -10,15 +10,12 @@ before_install:
 - cp config/secrets.yml.travis config/secrets.yml
 - cp config/database.yml.travis config/database.yml
 - psql -c 'create database travis_ci_test;' -U postgres
-before_script:
-- echo $HEROKU_API_KEY
-- echo "TESTEEEEEEE - $HEROKU_API_KEY"
 notifications:
   email: false
 deploy:
   provider: heroku
   api_key:
-    secure: $HEROKU_API_KEY
+    secure: NtYV7pHE8tG4bzNQNO1cJLhHliVROWjMmOMYFW9wQr0ZdgnS4SKg2rO9tIgqSV1DFz6jekNImkUDvS8u2pDyt9NHjy+erFrT772vQ1w+joytkbyxyiTmsQOQXkv0wddAxW+DJ2LuB2vSS7Sv4cDnSH++yMKLiTaM8KgaBkV0jCLqgPbagy2B893j+l7vUcMdwCjZN/Ftpw8+U88bu7W/z6Eol3vi2S0R4PkBq1GZDkZvqdKNRM24TweRg5IsIfNXE+JjwKr3K5baWmDwDEuGh7KABUe7E2g9kqs6tdqSeYwuphImrXd6ETY+XSl+kwvo7dEv/hzCSUTm8ZHFgqaM0gY9UXla+hAqJuadEyUWBH9GrU50jETvA/gwj2smWXU466/XMuroE7Dk9x+rXE5Asqtn38EGn7F8hZ2/wEs4Yc2ufc0DnvIEuS5qyXNMBIFHaU6BnwrMraMj/uadL/hKjeY8FUmRbUHWuVhRZK4cc0TzI9mzawbCwgaOwR/AfQive+2x34ezmvX8WXoHQVgNpHPQjUNB1CPh0Ss2ikjUV30YRjz7e6VdGDaURXPVFS5VDKOUuqzqj2gK+LYXVKLXCwjTOlHALk8Teq4nJSruRZOt5GOsDZgeFj/ZfNUV1N91/MMUlMtWeCnozhK0ZAzgxDaWeuAzFrqHR6wAK91pQ6Y=
   app: integrations-app
   on:
     repo: sofiapm/integrations-app
