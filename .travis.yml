@@ -2,7 +2,11 @@ language: ruby
 sudo: false
 rvm:
 - 2.2.2
-
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
 deploy:
   provider: heroku
   app: integration-app
