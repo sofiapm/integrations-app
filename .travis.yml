@@ -1,4 +1,25 @@
 language: ruby
 sudo: false
 rvm:
-  - "2.2.2"
+- 2.2.2
+services:
+- postgresql
+addons:
+  postgresql: '9.4'
+before_install:
+- cp config/secrets.yml.travis config/secrets.yml
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+before_script:
+- echo $HEROKU_API_KEY
+- echo "TESTEEEEEEE - $HEROKU_API_KEY"
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU_API_KEY
+  app: integrations-app
+  on:
+    repo: sofiapm/integrations-app
+    branch: master
