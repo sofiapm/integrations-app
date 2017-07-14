@@ -5,9 +5,9 @@ rvm:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
   - cp config/secrets.yml.travis config/secrets.yml
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
 deploy:
   provider: heroku
   app: integration-app
